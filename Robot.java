@@ -6,8 +6,8 @@ public class Robot {
         GameMouse.click(380, 180);
         // setupEmulator();
         // GameMouse.sleep(1000);
-        // doDailyEvents();
-        redoLevel(14);
+        doDailyEvents();
+        // redoLevel(14);
         // Crusader.completeCrusade();
         // Chests.tryBronzeSeconds(100);
 
@@ -54,11 +54,19 @@ public class Robot {
     /*********** DAILY EVENTS ***********/
     
     public static void doDailyEvents()  {
-        // collectMidas();
-        // Chests.getFreeChest();
-        // Arena.fightArena();
-        Trials.startAllTrials();
-        // TimeRift.startAllTrials();
+        collectMidas();
+        for (int x = 0; x < 5; ++x) {
+            Chests.getFreeChest();
+            Trials.startAllTrials();
+            if (x < 3) {
+                Arena.fightArena();
+                if (x < 2) {
+                    TimeRift.startAllTrials();
+                }
+            }
+            GameMouse.sleep(300000);
+        }
+        Crusader.completeCrusade();
     }
     
     public static void collectMidas()  {

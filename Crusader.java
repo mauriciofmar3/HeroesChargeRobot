@@ -3,14 +3,16 @@ public class Crusader {
     static Point[] level;
     static Point[] treasure;
     public static void completeCrusade() {
+        GameMouse.click(550, 200);
         setupCrusade();
-        for (int x = 0; x < 15; ++x) {
+        for (int x = 0; x < 12; ++x) {
             startLevel(x);
             collectTreasure(x);
             if (x == 4 || x == 10) {
                 dragScreen();
             }
         }
+        CommonItems.backButton();
     }
 
     public static void dragScreen() {
@@ -21,7 +23,7 @@ public class Crusader {
     public static void startLevel(int x) {
         GameMouse.click(level[x].x, level[x].y);
         CommonItems.acceptChallenger();
-        CommonItems.acceptHeroesAndStart(45000);
+        CommonItems.acceptHeroesAndStart(55000);
         CommonItems.nextButton();
     }
 
