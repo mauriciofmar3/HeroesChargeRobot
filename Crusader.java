@@ -5,7 +5,7 @@ public class Crusader {
     public static void completeCrusade() {
         GameMouse.click(550, 200);
         setupCrusade();
-        for (int x = 0; x < 12; ++x) {
+        for (int x = 0; x < 15; ++x) {
             startLevel(x);
             collectTreasure(x);
             if (x == 4 || x == 10) {

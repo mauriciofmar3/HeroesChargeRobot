@@ -4,7 +4,7 @@ import java.awt.event.*;
 
 public class GameMouse {
     public static void click(int x, int y) {
-        click(x, y, 1500);
+        click(x, y, 2500);
     }
 
     public static void click(int x, int y, int sleep) {
@@ -29,9 +29,16 @@ public class GameMouse {
         } catch (Exception e) { }
     }
 
+    public static void clickSimulator() {
+        click(40, 510, 750);
+    }
+
     public static void sleep(int sleepTime) {
         try {
             Thread.sleep(sleepTime);
+            if (sleepTime > 2100) {
+                clickSimulator();
+            }
         } catch (Exception e) { }
     }
 
@@ -60,5 +67,10 @@ public class GameMouse {
             bot.keyPress(KeyEvent.VK_ENTER);
             bot.keyRelease(KeyEvent.VK_ENTER);
         } catch (Exception e) { }
+    }
+
+    public static int dayOfWeek() {
+        final Calendar c = Calendar.getInstance();
+        return c.get(Calendar.DAY_OF_WEEK) - 1;
     }
 }
