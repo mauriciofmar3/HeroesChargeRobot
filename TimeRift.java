@@ -17,7 +17,7 @@ public class TimeRift {
         Point[] point = new Point[2];
         point[0] = new Point(200, 300);
         point[1] = new Point(600, 300);
-        int[] difficulty = {4, 4};
+        int[] difficulty = {5, 5};
         GameMouse.click(point[x].x, point[x].y);
         CommonItems.pickDifficultyLevel(difficulty[x]);
         startLevel();
@@ -30,6 +30,7 @@ public class TimeRift {
     }
 
     public static int[] trials() {
+        // return new int[] {0, 2};
         switch(GameMouse.dayOfWeek()) {
             case 0:
                 return new int[] {0, 2};

@@ -18,7 +18,7 @@ public class Trials {
         point[0] = new Point(180, 280);
         point[1] = new Point(400, 280);
         point[2] = new Point(630, 280);
-        int[] difficulty = {4, 4, 4};
+        int[] difficulty = {5, 5, 5};
         GameMouse.click(point[x].x, point[x].y);
         CommonItems.pickDifficultyLevel(difficulty[x]);
         startLevel();
@@ -31,6 +31,7 @@ public class Trials {
     }
 
     public static int[] trials() {
+        // return new int[] {0, 3};
         switch(GameMouse.dayOfWeek()) {
             case 0:
                 return new int[] {0, 3};

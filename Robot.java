@@ -4,10 +4,10 @@ import java.awt.event.*;
 public class Robot {
     public static void main(String args[]) {
         // GameMouse.click(380, 180);
-        // GameMouse.clickSimulator();
-        setupEmulator();
+        GameMouse.clickSimulator();
+        // setupEmulator();
         // GameMouse.sleep(1000);
-        // doDailyEvents();
+        doDailyEvents();
         // redoLevel(15);
         // Crusader.completeCrusade();
         // Chests.tryBronzeSeconds(100);
@@ -56,15 +56,15 @@ public class Robot {
     
     public static void doDailyEvents()  {
         // collectMidas();
-        for (int x = 2; x < 5; ++x) {
+        for (int x = 0; x < 5; ++x) {
             Chests.getFreeChest();
-            Trials.startAllTrials();
             if (x < 2) {
                 TimeRift.startAllTrials();
             }
             // if (x < 3) {
             //     Arena.fightArena();
             // }
+            Trials.startAllTrials();
             // if (x < 5) {
             //     GameMouse.sleep(200000);
             // }
