@@ -12,6 +12,7 @@ public class Emulator {
 
         // GameMouse.drag(1439, 899, 800, 550);
         GameMouse.drag(580, 291, 200, 291);
+        GameMouse.sleep(3000);
         GameMouse.click(45, 155);
         GameMouse.sleep(30000);
     }

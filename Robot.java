@@ -4,8 +4,12 @@ import java.awt.event.*;
 public class Robot {
     public static void main(String args[]) {
         // GameMouse.click(380, 180);
-        // GameMouse.clickSimulator();
+        GameMouse.clickSimulator();
         // Emulator.setupEmulator();
+        // Campaign.selectCampaign();
+        Campaign.selectNormalMode();
+        Campaign.selectHardMode();
+        Campaign.selectRaidMode();
         // GameMouse.sleep(1000);
         // doDailyEvents();
         // redoLevel(15);
