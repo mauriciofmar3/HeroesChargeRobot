@@ -7,13 +7,19 @@ public class Robot {
         GameMouse.clickSimulator();
         // setupEmulator();
         // GameMouse.sleep(1000);
-        doDailyEvents();
+        // doDailyEvents();
         // redoLevel(15);
         // Crusader.completeCrusade();
         // Chests.tryBronzeSeconds(100);
         // GameMouse.dayOfWeek();
+        startOperationQueue();
     }
     
+    public static void startOperationQueue() {
+        Trials.startAllTrials();
+        GameMouse.operationQueue.start();
+    }
+
     public static void setupEmulator() {
         spotlight();
         GameMouse.type("andy");

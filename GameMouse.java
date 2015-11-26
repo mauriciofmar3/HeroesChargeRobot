@@ -3,6 +3,11 @@ import java.awt.Robot;
 import java.awt.event.*;
 
 public class GameMouse {
+    public static OperationQueue operationQueue;
+    static {
+        operationQueue = new OperationQueue();
+    }
+
     public static void click(int x, int y) {
         click(x, y, 2500);
     }
@@ -72,5 +77,9 @@ public class GameMouse {
     public static int dayOfWeek() {
         final Calendar c = Calendar.getInstance();
         return c.get(Calendar.DAY_OF_WEEK) - 1;
+    }
+
+    public static void addTask(Task task) {
+        operationQueue.addTask(task);
     }
 }
