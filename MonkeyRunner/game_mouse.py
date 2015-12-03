@@ -15,6 +15,9 @@ def click_and_sleep(x, y, sleep):
 	game.device.touch(x, y, MonkeyDevice.DOWN_AND_UP)
 	time.sleep(sleep)
 
+def sleep(sleep):
+	time.sleep(sleep)
+
 def drag(point1, point2):
 	# game.device.drag(point1, point2, 1, 30)
 	game.device.touch(point1[0], point1[1], MonkeyDevice.DOWN)

@@ -1,8 +1,8 @@
 import game_mouse
 
 def do_daily_events():
-	# do_daily_sign_in()
-	# do_daily_midas()
+	do_daily_sign_in()
+	do_daily_midas()
 	claim_daily_events()
 
 
