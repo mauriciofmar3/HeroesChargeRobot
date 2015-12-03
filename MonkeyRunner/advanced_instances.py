@@ -26,5 +26,3 @@ def fight_button():
 
 def auto_fight_button():
 	game_mouse.click_and_sleep(1800, 1000, 20)
-
-

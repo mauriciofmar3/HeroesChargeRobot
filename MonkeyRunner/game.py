@@ -30,11 +30,11 @@ def do_daily_events():
 
 def screenshot():
 	result = device.takeSnapshot()
-	result.writeToFile('/Users/maumau/HeroesChargeRobot/MonkeyRunner/screenshots/' + str(time.time()) + '.png','png')
+	result.writeToFile('/Users/mau/HeroesChargeRobot/MonkeyRunner/screenshots/' + str(time.time()) + '.png','png')
 
 def screenshot_with_name(name):
 	result = device.takeSnapshot()
-	result.writeToFile('/Users/maumau/HeroesChargeRobot/MonkeyRunner/screenshots/' + name + '.png','png')
+	result.writeToFile('/Users/mau/HeroesChargeRobot/MonkeyRunner/screenshots/' + name + '.png','png')
 
 # Installs the Android package. Notice that this method returns a boolean, so you can test
 # to see if the installation worked.
