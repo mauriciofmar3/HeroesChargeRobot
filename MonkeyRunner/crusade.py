@@ -3,38 +3,56 @@ import time
 import game
 
 def do_all_crusades():
-	enter_crusades()
-	complete_crusade(0)
-	complete_crusade(1)
-	complete_crusade(2)
-	drag_left()
-	complete_crusade(3)
-	complete_crusade(4)
-	complete_crusade(5)
-	complete_crusade(6)
-	drag_left()
-	complete_crusade(7)
-	complete_crusade(8)
-	complete_crusade(9)
-	complete_crusade(10)
-	complete_crusade(11)
-	drag_left()
-	complete_crusade(12)
-	complete_crusade(13)
-	complete_crusade(14)
+	enter_crusades() 
+	for x in xrange(2,14):
+		complete_crusade(x)
+	# complete_crusade(0)
+	# complete_crusade(1)
+	# complete_crusade(2)
+	# drag_left()
+	# complete_crusade(3)
+	# complete_crusade(4)
+	# complete_crusade(5)
+	# complete_crusade(6)
+	# drag_left()
+	# complete_crusade(7)
+	# complete_crusade(8)
+	# complete_crusade(9)
+	# complete_crusade(10)
+	# complete_crusade(11)
+	# drag_left()
+	# complete_crusade(12)
+	# complete_crusade(13)
+	# complete_crusade(14)
 
 def enter_crusades():
 	game_mouse.click(1600, 400)
-
-def drag_left():
-	game_mouse.drag((1400, 400), (0, 400))
-	game_mouse.drag((1400, 400), (0, 400))
 	
 def complete_crusade(crusade):
+	drag_to_crusade(crusade)
 	complete_crusade_fight(crusade)
+	drag_to_crusade(crusade)
 	complete_treasure(crusade)
 
+def drag_to_crusade(crusade):
+	drag_to_start()
+	if crusade > 2:
+		drag_left()
+	if crusade > 6:
+		drag_left()
+	if crusade > 11:
+		drag_left()
+
+def drag_to_start():
+	for x in xrange(1, 10):
+		game_mouse.drag((100, 400), (1600, 400), 0.5)
+
+def drag_left():
+	game_mouse.drag((1400, 400), (0, 400), 1)
+	game_mouse.drag((1400, 400), (0, 400), 1)
+
 def complete_crusade_fight(crusade):
+	print "Selecting crusade %d" % crusade
 	select_crusade_or_treasure(crusade_point(crusade))
 	crusade_fight_button()
 	fight_button()
@@ -42,6 +60,7 @@ def complete_crusade_fight(crusade):
 	next_button()
 
 def complete_treasure(crusade):
+	print "Selecting treasure %d" % crusade
 	select_crusade_or_treasure(treasure_point(crusade))
 	game_mouse.back_button()
 	# if crusade % 3 == 2:
