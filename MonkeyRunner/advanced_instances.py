@@ -1,6 +1,7 @@
 import game_mouse
 
-def start_instances():	select_advanced_instances()
+def start_instances():	
+	select_advanced_instances()
 	select_time_rift()
 
 def select_advanced_instances():

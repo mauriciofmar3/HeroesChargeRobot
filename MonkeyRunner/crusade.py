@@ -3,10 +3,10 @@ import time
 import game
 
 def do_all_crusades():
-	# enter_crusades()
-	# complete_crusade(0)
-	# complete_crusade(1)
-	# complete_crusade(2)
+	enter_crusades()
+	complete_crusade(0)
+	complete_crusade(1)
+	complete_crusade(2)
 	drag_left()
 	complete_crusade(3)
 	complete_crusade(4)
