@@ -1,10 +1,34 @@
 import java.util.*;
 import java.awt.*;
 import java.awt.event.*;
+import javax.swing.*;
 public class Robot {
     public static void main(String args[]) {
+        // AndySetup.setupEmulator();
+
+
+        // clickToGetFocus();
+        // startLevel();
+        // redoLevel(67);
+
+        startGUI();
+
+
+
+
+
+
+        // System.out.println(args);
+        // int seconds = Integer.parseInt(args[0]);
+        // int repetitions = seconds * 50;
+        // for (int x = 0; x < repetitions; ++x) {
+        //   GameMouse.click(300, 300, 50);
+        //  if (x % 20 == 0) {
+           // GameMouse.click(100, 550, 20) ;
+        //  } 
+        // }
         // GameMouse.click(380, 180);
-        GameMouse.clickSimulator();
+        //GameMouse.clickSimulator();
         // setupEmulator();
         // GameMouse.sleep(1000);
         // doDailyEvents();
@@ -12,76 +36,58 @@ public class Robot {
         // Crusader.completeCrusade();
         // Chests.tryBronzeSeconds(100);
         // GameMouse.dayOfWeek();
-        startOperationQueue();
-    }
-    
-    public static void startOperationQueue() {
-        Trials.startAllTrials();
-        GameMouse.operationQueue.start();
+        //startOperationQueue();
     }
 
-    public static void setupEmulator() {
-        spotlight();
-        GameMouse.type("andy");
-        GameMouse.hitEnter();
-        GameMouse.sleep(20000);
-        GameMouse.drag(200, 30, 189, 30);
-        GameMouse.drag(1256, 874, 800, 550);
+    public static void startGUI() {
+        SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                // @SuppressWarnings("unused")
+                Robot robot = new Robot();
+            }
+        });
+    }
+    
+    public Robot() {
+        RobotGUI gui = new RobotGUI();
+        gui.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        gui.setVisible(true);
+        gui.requestFocusInWindow();
+        gui.requestFocus();
+    }
 
-        // GameMouse.drag(1439, 899, 800, 550);
-        GameMouse.drag(580, 291, 200, 291);
-        GameMouse.click(45, 155);
-        GameMouse.sleep(30000);
-    }
-
-    public static void spotlight() {
-        GameMouse.click(1375, 10);
-    }
     
-    public static void redoLevel(int repeat) {
-        for(int x = 0; x < repeat; ++x) {
-            redoLevel();
-        }
-        CommonItems.backButton();
-        CommonItems.backButton();
-    }
+    // public static void startOperationQueue() {
+    //     Trials.startAllTrials();
+    //     GameMouse.operationQueue.start();
+    // }
     
-    public static void startLevel() {
-        GameMouse.click(640, 320);
-        GameMouse.click(640, 320);
-        CommonItems.acceptHeroesAndStart();
-    }
-    
-    public static void redoLevel() {
-        GameMouse.click(710, 200);
-        CommonItems.nextButton();
-        CommonItems.acceptHeroesAndStart(80000);
-    }
     
     /*********** DAILY EVENTS ***********/
     
-    public static void doDailyEvents()  {
-        // collectMidas();
-        for (int x = 0; x < 5; ++x) {
-            Chests.getFreeChest();
-            if (x < 2) {
-                TimeRift.startAllTrials();
-            }
-            // if (x < 3) {
-            //     Arena.fightArena();
-            // }
-            Trials.startAllTrials();
-            // if (x < 5) {
-            //     GameMouse.sleep(200000);
-            // }
-        }
-        Crusader.completeCrusade();
-    }
+    // public static void doDailyEvents()  {
+    //     // collectMidas();
+    //     for (int x = 0; x < 5; ++x) {
+    //         Chests.getFreeChest();
+    //         if (x < 2) {
+    //             TimeRift.startAllTrials();
+    //         }
+    //         // if (x < 3) {
+    //         //     Arena.fightArena();
+    //         // }
+    //         Trials.startAllTrials();
+    //         // if (x < 5) {
+    //         //     GameMouse.sleep(200000);
+    //         // }
+    //     }
+    //     Crusader.completeCrusade();
+    // }
     
-    public static void collectMidas()  {
-        GameMouse.click(180, 70);
-        GameMouse.click(400, 300);
-        // GameMouse.click X
-        GameMouse.click(600, 110);
-    }
+    // public static void collectMidas()  {
+    //     GameMouse.click(180, 70);
+    //     GameMouse.click(400, 300);
+    //     // GameMouse.click X
+    //     GameMouse.click(600, 110);
+    // }
 }
