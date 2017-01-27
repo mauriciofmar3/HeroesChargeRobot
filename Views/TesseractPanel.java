@@ -15,6 +15,8 @@ class TesseractPanel extends JPanel {
 		addGrandChallengeButton();
 		addResultsTextArea();
 		closeWhenDoneCheckBox();
+		addRepeatBronzeChestsButton();
+		addDailyEventsButton();
 	}
 
 	JCheckBox closeWhenDoneCheckBox;
@@ -117,6 +119,39 @@ class TesseractPanel extends JPanel {
 				System.out.println("grand challenge");
 				GameMouse.clickToGetFocus();
 				GrandChallenge.fightArena(getTextInt() == 0 ? 5 : getTextInt());
+			}
+		});
+	}
+
+	JButton addRepeatBronzeChestsButton;
+	public void addRepeatBronzeChestsButton() {
+		addRepeatBronzeChestsButton = new JButton();
+		addRepeatBronzeChestsButton.setText("Bronze Chests");
+		addRepeatBronzeChestsButton.setPreferredSize(new Dimension(130, 50));
+		this.add(addRepeatBronzeChestsButton);
+		addRepeatBronzeChestsButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				System.out.println("bronze chests");
+				GameMouse.clickToGetFocus();
+				// GrandChallenge.fightArena(getTextInt() == 0 ? 5 : getTextInt());
+				Chests.tryBronzeSeconds(getTextInt() == 0 ? 1 : getTextInt());
+			}
+		});
+	}
+
+	JButton addDailyEventsButton;
+	public void addDailyEventsButton() {
+		addDailyEventsButton = new JButton();
+		addDailyEventsButton.setText("Daily Events");
+		addDailyEventsButton.setPreferredSize(new Dimension(130, 50));
+		this.add(addDailyEventsButton);
+		addDailyEventsButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				System.out.println("daily events");
+				GameMouse.clickToGetFocus();
+				// GrandChallenge.fightArena(getTextInt() == 0 ? 5 : getTextInt());
+				// Chests.tryBronzeSeconds(getTextInt() == 0 ? 1 : getTextInt());
+				DailyEvents.doDailyEvents();
 			}
 		});
 	}

@@ -3,7 +3,7 @@ import java.awt.*;
 import java.awt.Dimension;
 class RobotGUI extends JFrame {
     private final static int WIDTH = 500; // 1300;
-    private final static int HEIGHT = 500; // 850;
+    private final static int HEIGHT = 400; // 850;
     JPanel redoLevelPanel;
     JPanel setupAndyPanel;
     JPanel tesseractPanel;
@@ -29,14 +29,14 @@ class RobotGUI extends JFrame {
 
     public void addRedoLevelPanel() {
     	redoLevelPanel = new RedoLevelPanel();
-		redoLevelPanel.setPreferredSize(new Dimension(500, 100));
+		redoLevelPanel.setPreferredSize(new Dimension(500, 70));
         // redoLevelPanel.setLayout(borderLayout);
     	this.add(redoLevelPanel, BorderLayout.NORTH);
     }
 
     public void addSetupAndyPanel() {
     	setupAndyPanel = new SetupAndyPanel();
-		setupAndyPanel.setPreferredSize(new Dimension(500, 100));
+		setupAndyPanel.setPreferredSize(new Dimension(500, 70));
         // setupAndyPanel.setLayout(borderLayout);
     	this.add(setupAndyPanel, BorderLayout.SOUTH);
     }

@@ -22,14 +22,20 @@ public class GameMouse {
             Thread.sleep(sleep);
         } catch (Exception e) { }
     }
-    
+
     public static void drag(int x1, int y1, int x2, int y2) {
+        drag(x1, y1, x2, y2, 1000);
+    }
+
+    public static void drag(int x1, int y1, int x2, int y2, int sleepTime) {
         try {
             Robot bot = new Robot();
             bot.mouseMove(x1, y1);
+            Thread.sleep(sleepTime);
             bot.mousePress(InputEvent.getMaskForButton(1));
-            Thread.sleep(1000);
+            Thread.sleep(sleepTime);
             bot.mouseMove(x2, y2);
+            Thread.sleep(sleepTime);
             bot.mouseRelease(InputEvent.getMaskForButton(1));
             Thread.sleep(1500);
         } catch (Exception e) { }

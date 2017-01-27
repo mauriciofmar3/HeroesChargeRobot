@@ -1,17 +1,19 @@
 class Plunder {
 	public static boolean canPlunder = true;
+	public static int lastPower = -1;
 
 	public static void startInfinitePlunder() {
 		for (;canPlunder;) {
 			int enemyPower = detectCurrentEnemyPower();
 			System.out.println(enemyPower);
-			if (enemyPower < 50000) {
+			if (enemyPower < 50000 && lastPower != enemyPower) {
 				System.out.println("YES");
 				plunder();
 			} else {
 				System.out.println("NO");
 				searchAgain();
 			}
+			lastPower = enemyPower;
 		}
 	}
 

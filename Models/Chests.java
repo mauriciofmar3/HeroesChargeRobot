@@ -28,6 +28,6 @@ public class Chests {
 	}
 
 	public static void tenBronze(int sleep) {
-		GameMouse.click(300, 457, sleep);
+		GameMouse.click(370, 430, sleep);
 	}
 }
