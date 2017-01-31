@@ -2,12 +2,12 @@ import java.awt.*;
 public class CommonItems {
     public static void pickDifficultyLevel(int x) {
         Point[] point = new Point[6];
-        point[0] = new Point(230, 260);
+        point[0] = new Point(200, 250);
         point[1] = new Point(400, 260);
-        point[2] = new Point(570, 260);
-        point[3] = new Point(230, 411);
-        point[4] = new Point(400, 411);
-        point[5] = new Point(570, 411);
+        point[2] = new Point(600, 260);
+        point[3] = new Point(200, 400);
+        point[4] = new Point(400, 400);
+        point[5] = new Point(600, 400);
         GameMouse.click(point[x].x, point[x].y);
     }
 

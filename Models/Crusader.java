@@ -11,7 +11,7 @@ public class Crusader {
             //     dragScreen();
             // }
         }
-        CommonItems.backButton();
+        // CommonItems.backButton();
     }
 
     public static void dragScreen() {

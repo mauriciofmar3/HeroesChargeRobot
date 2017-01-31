@@ -11,7 +11,7 @@ class BootyCave {
 				sameResultCounter = 0;
 				return;
 			}
-			if (enemyPower < 50000 && enemyPower > 10000) {
+			if (enemyPower < 54000 && enemyPower > 10000) {
 				System.out.println("YES");
 				sameResultCounter = lastResult == true ? sameResultCounter + 1 : 0;
 				lastResult = true;

@@ -3,10 +3,19 @@ class DailyEvents {
 	public static void doDailyEvents() {
         selectDailyEvents();
 		for(;;) {
-			String taskString = getTaskString();
-            boolean isClaim = isClaim();
-            System.out.println("TASK STRING " + taskString + " IS CLAIM " + isClaim);
-            scrollToNextTask(); 
+            if (isClaim()) {
+                claimDoneTask();
+            } else {
+                if (takeDailyAction(getTaskString())) {
+                    return;
+                } else {
+                    scrollToNextTask();
+                }
+            }
+			// String taskString = getTaskString();
+            // boolean isClaim = isClaim();
+            // System.out.println("TASK STRING " + taskString + " IS CLAIM " + isClaim);
+            // scrollToNextTask(); 
 		}
 	}
 
@@ -15,11 +24,11 @@ class DailyEvents {
 	}
 
     public static void scrollToNextTask() {
-        GameMouse.drag(500, 300, 500, 190, 3000);
+        GameMouse.mouseWheel(500, 200, -4450);
     }
 
     public static String getTaskString() {
-        Tesseract.takeScreenshot(300, 150, 300, 30);
+        Tesseract.takeScreenshot(300, 140, 300, 50);
         GameMouse.sleep(2000);
         String result = Tesseract.parseScreenshotString();
         return result;
@@ -33,13 +42,39 @@ class DailyEvents {
     }
 
     public static void claimDoneTask() {
-    	// hit claim button
-    	GameMouse.click(600, 200);
+        // hit claim button
+        GameMouse.click(680, 184);
     	// hit done button
-    	GameMouse.click(400, 250);
+    	GameMouse.click(410, 333);
     }
 
-    public static void takeDailyAction(String taskString) {
-    	// if ()
+    public static void clickGoButton() {
+        // hit claim button
+        GameMouse.click(680, 210);
+    }
+
+    740 150
+    public static boolean takeDailyAction(String taskString) {
+    	if (taskString.contains("Midas")) {
+            DailyEvents.clickGoButton();
+            DailyEvents.doMidas();
+            return true;
+        } else if (taskString.contains("Embark")) {
+            DailyEvents.clickGoButton();
+            Crusader.completeCrusade(0);
+            GameMouse.hitEscape();
+            return true;
+        } else if (taskString.contains("Lord")) {
+            DailyEvents.clickGoButton();
+            TimeRift.startAllTrials();
+            GameMouse.hitEscape();
+            return true;
+        }
+        return false;
+    }
+
+    public static void doMidas() {
+        GameMouse.click(150, 415);
+        GameMouse.hitEscape();
     }
 }
