@@ -135,7 +135,7 @@ public class GameMouse {
         try {
             Robot bot = new Robot();
             return bot.getPixelColor(x, y);
-            sleep(1000);
+            // sleep(1000);
         } catch (Exception e) { }
         return null;
     }

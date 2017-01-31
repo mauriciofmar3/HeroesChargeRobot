@@ -53,7 +53,6 @@ class DailyEvents {
         GameMouse.click(680, 210);
     }
 
-    740 150
     public static boolean takeDailyAction(String taskString) {
     	if (taskString.contains("Midas")) {
             DailyEvents.clickGoButton();
@@ -67,6 +66,11 @@ class DailyEvents {
         } else if (taskString.contains("Lord")) {
             DailyEvents.clickGoButton();
             TimeRift.startAllTrials();
+            GameMouse.hitEscape();
+            return true;
+        } else if (taskString.contains("Cracker")) {
+            DailyEvents.clickGoButton();
+            Chests.getTenChests();
             GameMouse.hitEscape();
             return true;
         }
