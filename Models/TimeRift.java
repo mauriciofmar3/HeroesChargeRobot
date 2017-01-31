@@ -5,23 +5,32 @@ public class TimeRift {
 	}
     
     public static void startAllTrials() {
-    	selectTrials();
+    	// selectTrials();
         int[] trials = trials();
         for(int x = trials[0]; x < trials[1]; x++) {
             startTrial(x);
         }
-        CommonItems.backButton();
+        // CommonItems.backButton();
     }
 
     public static void startTrial(int x) {
         Point[] point = new Point[2];
-        point[0] = new Point(200, 300);
-        point[1] = new Point(600, 300);
-        int[] difficulty = {5, 5};
+        point[0] = new Point(250, 300);
+        point[1] = new Point(560, 300);
+        int[] difficulty = {3, 4};
         GameMouse.click(point[x].x, point[x].y);
         CommonItems.pickDifficultyLevel(difficulty[x]);
-        startLevel();
-        CommonItems.nextButton();
+        TimeRift.clickRaidAll();
+        GameMouse.hitEscape();
+        GameMouse.hitEscape();
+        GameMouse.hitEscape();
+
+        // startLevel();
+        // CommonItems.nextButton();
+    }
+
+    public static void clickRaidAll() {
+        GameMouse.click(666, 250);
     }
     
     public static void startLevel() {

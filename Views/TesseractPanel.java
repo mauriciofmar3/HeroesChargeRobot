@@ -13,6 +13,7 @@ class TesseractPanel extends JPanel {
 		addTakeScreenshotButton();
 		addPlunderGoldButton();
 		addGrandChallengeButton();
+		addCollectGrandChallengeButton();
 		addResultsTextArea();
 		closeWhenDoneCheckBox();
 		addRepeatBronzeChestsButton();
@@ -98,12 +99,16 @@ class TesseractPanel extends JPanel {
 		this.add(takeScreenshotButton);
 		takeScreenshotButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("double click");
-				GameMouse.click(340, 30, 200);
-				GameMouse.click(340, 30, 200);
-				GameMouse.click(340, 30, 200);
-				GameMouse.click(340, 30, 200);
+				// System.out.println("double click");
+				// GameMouse.click(340, 30, 200);
+				// GameMouse.click(340, 30, 200);
+				// GameMouse.click(340, 30, 200);
+				// GameMouse.click(340, 30, 200);
 				// Tesseract.takeScreenshot(365, 425, 70, 25);
+				GameMouse.clickToGetFocus();
+				// GameMouse.drag(200, 600, 800, 300);
+				// GameMouse.mouseWheel(900, 300, 4000);
+				GameMouse.hitEscape();
 			}
 		});
 	}
@@ -119,6 +124,21 @@ class TesseractPanel extends JPanel {
 				System.out.println("grand challenge");
 				GameMouse.clickToGetFocus();
 				GrandChallenge.fightArena(getTextInt() == 0 ? 5 : getTextInt());
+			}
+		});
+	}
+
+	JButton collectGrandChallengeButton;
+	public void addCollectGrandChallengeButton() {
+		collectGrandChallengeButton = new JButton();
+		collectGrandChallengeButton.setText("Collect Grand Challenge");
+		collectGrandChallengeButton.setPreferredSize(new Dimension(130, 50));
+		this.add(collectGrandChallengeButton);
+		collectGrandChallengeButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				System.out.println("collect grand challenge");
+				GameMouse.clickToGetFocus();
+				GrandChallenge.collectGrandChallenge(getTextInt() == 0 ? 5 : getTextInt());
 			}
 		});
 	}

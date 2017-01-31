@@ -24,19 +24,33 @@ public class GameMouse {
     }
 
     public static void drag(int x1, int y1, int x2, int y2) {
-        drag(x1, y1, x2, y2, 1000);
+        drag(x1, y1, x2, y2, 4000);
     }
 
     public static void drag(int x1, int y1, int x2, int y2, int sleepTime) {
         try {
             Robot bot = new Robot();
             bot.mouseMove(x1, y1);
-            Thread.sleep(sleepTime);
+            // Thread.sleep(sleepTime);
             bot.mousePress(InputEvent.getMaskForButton(1));
             Thread.sleep(sleepTime);
             bot.mouseMove(x2, y2);
-            Thread.sleep(sleepTime);
+            // Thread.sleep(sleepTime);
             bot.mouseRelease(InputEvent.getMaskForButton(1));
+            Thread.sleep(1500);
+        } catch (Exception e) { }
+    }
+
+    public static void mouseWheel(int x, int y, int wheelAmount) {
+        try {
+            Robot bot = new Robot();
+            boolean negative = wheelAmount < 0;
+            wheelAmount = Math.abs(wheelAmount);
+            bot.mouseMove(x, y);
+            for (int i = 0; i < wheelAmount / 10; ++i) {
+                bot.mouseWheel(negative ? -10 : 10);
+                GameMouse.sleep(10);
+            }
             Thread.sleep(1500);
         } catch (Exception e) { }
     }
@@ -107,4 +121,23 @@ public class GameMouse {
         AndySetup.closeAndy();
         System.exit(0);
     }
+
+    public static void hitEscape() {
+        try {
+            Robot bot = new Robot();
+            bot.keyPress(KeyEvent.VK_ESCAPE);
+            bot.keyRelease(KeyEvent.VK_ESCAPE);
+            sleep(1000);
+        } catch (Exception e) { }
+    }
+
+    public static Color getPixelColor(int x, int y) {
+        try {
+            Robot bot = new Robot();
+            return bot.getPixelColor(x, y);
+            sleep(1000);
+        } catch (Exception e) { }
+        return null;
+    }
+
 }
