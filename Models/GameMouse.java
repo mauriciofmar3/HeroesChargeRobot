@@ -4,11 +4,6 @@ import java.awt.event.*;
 import java.awt.*;
 
 public class GameMouse {
-    public static OperationQueue operationQueue;
-    static {
-        operationQueue = new OperationQueue();
-    }
-
     public static void click(int x, int y) {
         click(x, y, 2500);
     }
@@ -37,20 +32,6 @@ public class GameMouse {
             bot.mouseMove(x2, y2);
             // Thread.sleep(sleepTime);
             bot.mouseRelease(InputEvent.getMaskForButton(1));
-            Thread.sleep(1500);
-        } catch (Exception e) { }
-    }
-
-    public static void mouseWheel(int x, int y, int wheelAmount) {
-        try {
-            Robot bot = new Robot();
-            boolean negative = wheelAmount < 0;
-            wheelAmount = Math.abs(wheelAmount);
-            bot.mouseMove(x, y);
-            for (int i = 0; i < wheelAmount / 10; ++i) {
-                bot.mouseWheel(negative ? -10 : 10);
-                GameMouse.sleep(10);
-            }
             Thread.sleep(1500);
         } catch (Exception e) { }
     }
@@ -105,10 +86,6 @@ public class GameMouse {
         return c.get(Calendar.DAY_OF_WEEK) - 1;
     }
 
-    public static void addTask(Task task) {
-        operationQueue.addTask(task);
-    }
-
     public static int[] getMousePosition() {
         Point point = MouseInfo.getPointerInfo().getLocation();
         int[] ret = new int[2];
@@ -140,4 +117,25 @@ public class GameMouse {
         return null;
     }
 
+    public static void mouseWheel(int x, int y, boolean up, GameMouseWheelListener listener) {
+        try {
+            Robot bot = new Robot();
+            // boolean negative = wheelAmount < 0;
+            // wheelAmount = Math.abs(wheelAmount);
+            bot.mouseMove(x, y);
+            while(listener.shouldKeepScrolling()) {
+                bot.mouseWheel(up ? -10 : 10);
+                GameMouse.sleep(40);
+                Color pixelColor = GameMouse.getPixelColor(x, y);
+                System.out.println(pixelColor);
+            }
+
+            Thread.sleep(1500);
+        } catch (Exception e) { }
+    }
+}
+
+
+abstract class GameMouseWheelListener {
+    public abstract boolean shouldKeepScrolling();
 }

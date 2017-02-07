@@ -25,7 +25,7 @@ class Tesseract {
 			Runtime rt = Runtime.getRuntime();
 			Process pr = rt.exec("tesseract temp out");
             pr.waitFor();
-			// GameMouse.sleep(1000);
+			// GameMouse.sleep(500);
 			Scanner in = new Scanner(new FileReader("out.txt"));
 			String str = in.nextLine();
 			str = str.replaceAll("[^0-9]", "");

@@ -28,12 +28,13 @@ public class Crusader {
 
     public static void collectTreasure(int x) {
         GameMouse.click(treasure[x].x, treasure[x].y);
-        GameMouse.sleep(1500);
-        if (x % 3 == 2) {
-            CommonItems.hitLowerOK();
-        } else {
-            CommonItems.hitOK();
-        }
+        GameMouse.hitEscape();
+        // GameMouse.sleep(1500);
+        // if (x % 3 == 2) {
+        //     CommonItems.hitLowerOK();
+        // } else {
+        //     CommonItems.hitOK();
+        // }
     }
 
     public static void setupCrusade() {

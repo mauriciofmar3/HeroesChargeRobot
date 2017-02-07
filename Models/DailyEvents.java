@@ -1,13 +1,15 @@
+import java.awt.Color;
 class DailyEvents {
 	public static String lastTask;
 	public static void doDailyEvents() {
+        signin();
         selectDailyEvents();
 		for(;;) {
             if (isClaim()) {
                 claimDoneTask();
             } else {
                 if (takeDailyAction(getTaskString())) {
-                    return;
+                    continue;
                 } else {
                     scrollToNextTask();
                 }
@@ -24,11 +26,22 @@ class DailyEvents {
 	}
 
     public static void scrollToNextTask() {
-        GameMouse.mouseWheel(500, 200, -4450);
+        GameMouse.mouseWheel(740, 146, true, new GameMouseWheelListener() {
+            public boolean shouldKeepScrolling() {
+                Color color = GameMouse.getPixelColor(740, 146);
+                return color.getRed() > 100;
+            }
+        });
+        GameMouse.mouseWheel(740, 146, true, new GameMouseWheelListener() {
+            public boolean shouldKeepScrolling() {
+                Color color = GameMouse.getPixelColor(740, 146);
+                return color.getRed() < 100;
+            }
+        });
     }
 
     public static String getTaskString() {
-        Tesseract.takeScreenshot(300, 140, 300, 50);
+        Tesseract.takeScreenshot(305, 150, 320, 27);
         GameMouse.sleep(2000);
         String result = Tesseract.parseScreenshotString();
         return result;
@@ -68,9 +81,19 @@ class DailyEvents {
             TimeRift.startAllTrials();
             GameMouse.hitEscape();
             return true;
+        } else if (taskString.contains("Trial")) {
+            DailyEvents.clickGoButton();
+            Trials.startAllTrials();
+            GameMouse.hitEscape();
+            return true;
         } else if (taskString.contains("Cracker")) {
             DailyEvents.clickGoButton();
             Chests.getTenChests();
+            GameMouse.hitEscape();
+            return true;
+        } else if (taskString.contains("Mercenary")) {
+            DailyEvents.clickGoButton();
+            Mercenary.sendMercenary();
             GameMouse.hitEscape();
             return true;
         }
@@ -79,6 +102,12 @@ class DailyEvents {
 
     public static void doMidas() {
         GameMouse.click(150, 415);
+        GameMouse.hitEscape();
+    }
+
+    public static void signin() {
+        GameMouse.click(40, 200);
+        GameMouse.click(666, 460);
         GameMouse.hitEscape();
     }
 }

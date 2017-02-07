@@ -20,17 +20,10 @@ public class TimeRift {
         int[] difficulty = {3, 4};
         GameMouse.click(point[x].x, point[x].y);
         CommonItems.pickDifficultyLevel(difficulty[x]);
-        TimeRift.clickRaidAll();
+        CommonItems.raidAll();
         GameMouse.hitEscape();
         GameMouse.hitEscape();
         GameMouse.hitEscape();
-
-        // startLevel();
-        // CommonItems.nextButton();
-    }
-
-    public static void clickRaidAll() {
-        GameMouse.click(666, 250);
     }
     
     public static void startLevel() {

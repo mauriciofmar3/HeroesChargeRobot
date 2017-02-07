@@ -75,6 +75,10 @@ public class CommonItems {
         }
     }
 
+    public static void raidAll() {
+        GameMouse.click(666, 250);
+    }
+
     public static void waitUntilFightDone() {
         for(;;) {
             if (fightDone()) {
