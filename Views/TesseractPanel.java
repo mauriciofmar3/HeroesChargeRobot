@@ -130,7 +130,8 @@ class TesseractPanel extends JPanel {
           //   		}
         		// });
         		// BootyCave.setupAllCaves();
-        		BootyCave.claimAllExtra();
+        		// BootyCave.claimAllExtra();
+        		HeroSkills.addDailySkills();
 			}
 		});
 	}

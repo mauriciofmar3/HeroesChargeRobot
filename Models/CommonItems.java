@@ -15,18 +15,6 @@ public class CommonItems {
         acceptHeroesAndStart(27000);
     }
 
-    public static void hitOK() {
-        GameMouse.click(400, 377);
-    }
-
-    public static void hitLowerOK() {
-        GameMouse.click(400, 421);
-    }
-
-    public static void backButton() {
-        GameMouse.click(70, 80);
-    }
-
     public static void nextButton() {
         GameMouse.click(689, 431);
     }
@@ -39,15 +27,11 @@ public class CommonItems {
         GameMouse.click(670, 470);
         GameMouse.sleep(2500);
         autoFight();
-        // GameMouse.sleep(throttleTime);
         waitUntilFightDone();
     }
 
     public static void acceptHeroesAndStart(int throttleTime) {
         GameMouse.click(670, 470);
-        // GameMouse.sleep(4000);
-        // GameMouse.click(740, 460);
-        // GameMouse.sleep(th/rottleTime);
         waitUntilFightDone();
     }
 

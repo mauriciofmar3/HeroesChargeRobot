@@ -21,27 +21,4 @@ public class Chests {
 	public static void tenBronze(int sleep) {
 		GameMouse.click(370, 430, sleep);
 	}
-
-	/***************** OLD ********************/
-
-	public static void getFreeChest() {
-		chooseChest();
-		chooseBronzeChest();
-		freeBronze();
-		GameMouse.sleep(5000);
-		GameMouse.click(500, 475);
-		CommonItems.backButton();
-	}
-
-	public static void chooseChest() {
-		GameMouse.click(550, 400);
-	}
-
-	public static void chooseBronzeChest() {
-		GameMouse.click(260, 440);
-	}
-
-	public static void freeBronze() {
-		GameMouse.click(260, 310);
-	}
 }

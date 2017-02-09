@@ -96,6 +96,16 @@ class DailyEvents {
             Mercenary.sendMercenary();
             GameMouse.hitEscape();
             return true;
+        } else if (taskString.contains("Cave")) {
+            DailyEvents.clickGoButton();
+            BootyCave.plunderGold();
+            GameMouse.hitEscape();
+            return true;
+        } else if (taskString.contains("Skills")) {
+            DailyEvents.clickGoButton();
+            HeroSkills.addDailySkills();
+            GameMouse.hitEscape();
+            return true;
         }
         return false;
     }

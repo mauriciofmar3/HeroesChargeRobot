@@ -1,15 +1,9 @@
 import java.awt.*;
 import java.util.Arrays;
 public class Trials {
-    
     public static void startAllTrials() {
-        // selectTrials();
         int[] trials = trials();
-            System.out.println("TRIALS " + Arrays.toString(trials));
         for(int x = trials[0]; x < trials[1]; x++) {
-            // startTrial(x);
-            // TrialTask task = new TrialTask(x);
-            // GameMouse.operationQueue.addTask(task);
             Trials.pickDifficultyLevel(x);
             CommonItems.raidAll();
             GameMouse.hitEscape();
@@ -17,13 +11,6 @@ public class Trials {
             GameMouse.hitEscape();
         }
     }
-
-    // public void start() {
-    //     pickDifficultyLevel();
-    //     // startLevel();
-    //     // CommonItems.nextButton();
-    //     // CommonItems.backButton();
-    // }
 
     public static void selectTrials() {
         GameMouse.click(650, 270);
@@ -44,11 +31,6 @@ public class Trials {
         point[2] = new Point(630, 280);
         return point[trialNumber];
     }
-    
-    // public void startLevel() {
-    //     GameMouse.click(680, 430);
-    //     CommonItems.acceptHeroesAndStart(levelTime);
-    // }
 
     public static int[] trials() {
         // return new int[] {0, 3};

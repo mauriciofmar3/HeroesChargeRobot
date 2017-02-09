@@ -7,7 +7,6 @@ class Mercenary {
 		Mercenary.sendFirstHero();
 		Mercenary.hitConfirm();
 		GameMouse.hitEscape();
-		// GameMouse.hitEscape();
 	}
 
 	public static void openMercenaryCamp() {

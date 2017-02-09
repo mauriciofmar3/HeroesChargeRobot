@@ -7,11 +7,7 @@ public class Crusader {
         for (int x = startingLevel; x < 15; ++x) {
             startLevel(x);
             collectTreasure(x);
-            // if (x == 4 || x == 10) {
-            //     dragScreen();
-            // }
         }
-        // CommonItems.backButton();
     }
 
     public static void dragScreen() {
@@ -29,12 +25,6 @@ public class Crusader {
     public static void collectTreasure(int x) {
         GameMouse.click(treasure[x].x, treasure[x].y);
         GameMouse.hitEscape();
-        // GameMouse.sleep(1500);
-        // if (x % 3 == 2) {
-        //     CommonItems.hitLowerOK();
-        // } else {
-        //     CommonItems.hitOK();
-        // }
     }
 
     public static void setupCrusade() {

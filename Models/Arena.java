@@ -5,7 +5,7 @@ public class Arena {
 		selectFight();
 		CommonItems.acceptHeroesAndStart(70000);
 		CommonItems.failedButton();
-		CommonItems.backButton();
+		GameMouse.hitEscape();
 	}
 
 	public static void selectArena() {

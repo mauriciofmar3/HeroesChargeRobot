@@ -10,7 +10,6 @@ public class TimeRift {
         for(int x = trials[0]; x < trials[1]; x++) {
             startTrial(x);
         }
-        // CommonItems.backButton();
     }
 
     public static void startTrial(int x) {

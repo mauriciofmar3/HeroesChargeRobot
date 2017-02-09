@@ -5,7 +5,11 @@ class BootyCave {
 	public static int sameResultCounter = 0;
 
 	public static void plunderGold() {
+		System.out.println("SETUP ALL CAVES");
+		setupAllCaves();
+		System.out.println("CLAIM ALL EXTRA");
 		claimAllExtra();
+		System.out.println("PLUNDER ALL BOOTY");
 		for (;;) {
 			int enemyPower = detectCurrentEnemyPower();
 			System.out.println(enemyPower);
@@ -133,11 +137,16 @@ class BootyCave {
 		if (needsSeetingUp()) {
 			collectAllResources();
 			setupAllDigs();
+		} else {
+			for (int x = 0; x < 4; ++x) {
+				// click right arrow 
+				GameMouse.click(760, 290);
+			}
 		}
 		// click plunder gold
 		GameMouse.click(400, 300);
 		GameMouse.sleep(1500);
-		plunderGold();
+		// plunderGold();
 	}
 
 	public static void setupAllDigs() {
@@ -162,10 +171,10 @@ class BootyCave {
 		GameMouse.click(660, 180);
 		// click OK
 		GameMouse.click(680, 466);
-		for (int x = 0; x < 4; ++x) {
+		// for (int x = 0; x < 4; ++x) {
 			// click right arrow 
 			GameMouse.click(760, 290);
-		}
+		// }
 	}
 
 	public static void collectAllResources() {
