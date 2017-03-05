@@ -7,6 +7,10 @@ class Mercenary {
 		Mercenary.sendFirstHero();
 		Mercenary.hitConfirm();
 		GameMouse.hitEscape();
+		Mercenary.hitAdmiration();
+		Mercenary.hitGainStamina();
+		GameMouse.hitEscape();
+		GameMouse.hitEscape();
 	}
 
 	public static void openMercenaryCamp() {
@@ -31,5 +35,13 @@ class Mercenary {
 
 	public static void hitConfirm() {
 		GameMouse.click(440, 340);
+	}
+
+	public static void hitAdmiration() {
+		GameMouse.click(700, 250);
+	}
+	
+	public static void hitGainStamina() {
+		GameMouse.click(546, 274);
 	}
 }

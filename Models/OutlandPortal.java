@@ -2,7 +2,7 @@ import java.awt.*;
 import java.util.Arrays;
 public class OutlandPortal {
     
-    public static void startPortal() {
+    public static boolean startPortal() {
         // selectTrials();
         // int[] trials = trials();
         //     System.out.println("TRIALS " + Arrays.toString(trials));
@@ -16,30 +16,21 @@ public class OutlandPortal {
             // GameMouse.hitEscape();
             // GameMouse.hitEscape();
         // }
-        System.out.println(OutlandPortal.getPortalString());
-    }
-
-
-    public static void selectTrials() {
-        GameMouse.click(650, 270);
-    }
-
-    public static void pickDifficultyLevel(int trialNumber) {
-        System.out.println("TRIAL NUMBER " + trialNumber);
-        Point point = trialPoint(trialNumber);
-        int[] difficulty = {4, 3, 4};
-        GameMouse.click(point.x, point.y);
-        CommonItems.pickDifficultyLevel(difficulty[trialNumber]);
-    }
-
-    public static Point trialPoint(int trialNumber) {
-        Point[] point = new Point[3];
-        point[0] = new Point(180, 280);
-        point[1] = new Point(400, 280);
-        point[2] = new Point(630, 280);
-        return point[trialNumber];
-    }
-    
+        String portalString = OutlandPortal.getPortalString();
+        System.out.println(portalString);
+        int difficultyLevel = getDifficulty(portalString);
+        if (difficultyLevel < 0) {
+            return false;
+        }
+        // click today's portal
+        GameMouse.click(230, 290);
+        CommonItems.pickDifficultyLevel(difficultyLevel);
+        CommonItems.raidAll();
+        GameMouse.hitEscape();
+        GameMouse.hitEscape();
+        GameMouse.hitEscape();
+        return true;
+    }    
 
     public static String getPortalString() {
         Tesseract.takeScreenshot(130, 410, 180, 27);
@@ -48,10 +39,16 @@ public class OutlandPortal {
         return result;
     }
 
-    public static int[] getDifficulty(String portal) {
+    public static int getDifficulty(String portal) {
         if (portal.contains("Raged Blood")) {
-            return null;
+            return -1;
+        } else if (portal.contains("Burning") || portal.contains("Phoenix")) {
+            return 4;
+        } else if (portal.contains("Lord") || portal.contains("Caves")) {
+            return 2;
+        } else if (portal.contains("Robot") || portal.contains("Fighter")) {
+            return 4;
         }
-        return null;
+        return -1;
     } 
 }

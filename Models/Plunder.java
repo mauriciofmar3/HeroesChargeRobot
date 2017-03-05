@@ -19,7 +19,7 @@ class Plunder {
 
 	public static void plunder() {
 		clickPlunder();
-        CommonItems.acceptHeroesStartAutofight(40000);
+        CommonItems.acceptHeroesStartAutofight();
         CommonItems.nextButton();
         searchAgain();
 	}

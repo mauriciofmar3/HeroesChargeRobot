@@ -1,10 +1,23 @@
+import java.awt.*;
 class GrandChallenge {
-	public static void fightArena(int count) {
-		for (int x = 0; x < count; ++x) {
+	public static void fightArena() {
+
+		// Color c = GameMouse.getPixelColor(686, 245);
+		// System.out.println(c);
+		for (int x = 0;;++x) {
 			selectChallenge();
-			CommonItems.acceptHeroesStartAutofight(30000);
+			if (x == 0) {
+				CommonItems.clickTeamPreset();
+				CommonItems.clickUsePreset();
+			}
+			CommonItems.acceptHeroesStartAutofight();
         	CommonItems.nextButton();
-        	nextChallenge();
+        	collectSingleChest();
+        	if (hasNext()) {
+        		nextChallenge();
+        	} else {
+        		break;
+        	}
 		}
 	}
 
@@ -28,6 +41,14 @@ class GrandChallenge {
 		GameMouse.click(400, 360);
 	}
 
+	public static boolean hasNext() {
+		Color c = GameMouse.getPixelColor(686, 245);
+		return 
+			c.getRed() == 0 &&
+			c.getGreen() == 191 &&
+			c.getBlue() == 255;
+	}
+
 	public static void collectGrandChallenge(int count) {
 		for (int x = 0; x < count; ++x) {
 			fourthTreasureChest();
@@ -36,5 +57,13 @@ class GrandChallenge {
 			downButton();
 			GameMouse.sleep(1000);
 		}
+	}
+
+	public static void collectSingleChest() {
+		GameMouse.sleep(3000);
+		fourthTreasureChest();
+		GameMouse.sleep(1000);
+		GameMouse.hitEscape();
+
 	}
 }

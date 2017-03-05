@@ -16,6 +16,7 @@ class BootyCave {
 			int plunderCount = plunderCount();
 			if (plunderCount < 2) {
 				sameResultCounter = 0;
+				GameMouse.hitEscape();
 				return;
 			}
 			if (enemyPower < 54000 && enemyPower > 10000) {
@@ -53,7 +54,7 @@ class BootyCave {
 
 	public static void plunder() {
 		clickPlunder();
-        CommonItems.acceptHeroesAndStart(25000);
+        CommonItems.acceptHeroesAndStart();
         CommonItems.nextButton();
         clickSearch();
 	}
@@ -162,13 +163,12 @@ class BootyCave {
 		GameMouse.click(310, 275);
 		// click dig time 10 hours
 		GameMouse.click(545, 270);
-		// click Team preset
-		GameMouse.click(560, 100);
+		// click team preset (without mercernary road)
+        GameMouse.click(560, 100);
 		for (int x = 0; x < position + 1; ++x) {
-			goToNextPreset();
+			CommonItems.goToNextPreset();
 		}
-		// click Use
-		GameMouse.click(660, 180);
+		CommonItems.clickUsePreset();
 		// click OK
 		GameMouse.click(680, 466);
 		// for (int x = 0; x < 4; ++x) {
@@ -188,20 +188,5 @@ class BootyCave {
 		Tesseract.takeScreenshot(500, 137, 100, 30);
 		String result = Tesseract.parseScreenshotString();
 		return result.equals("");
-	}
-
-	public static void goToNextPreset() {
-		GameMouse.mouseWheel(700, 135, true, new GameMouseWheelListener() {
-    		public boolean shouldKeepScrolling() {
-        		Color color = GameMouse.getPixelColor(700, 135);
-        		return color.getRed() > 100;
-    		}
-		});
-		GameMouse.mouseWheel(700, 135, true, new GameMouseWheelListener() {
-    		public boolean shouldKeepScrolling() {
-        		Color color = GameMouse.getPixelColor(700, 135);
-        		return color.getRed() < 100;
-    		}
-		});
 	}
 }

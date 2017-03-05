@@ -131,7 +131,8 @@ class TesseractPanel extends JPanel {
         		// });
         		// BootyCave.setupAllCaves();
         		// BootyCave.claimAllExtra();
-        		HeroSkills.addDailySkills();
+        		// HeroSkills.addDailySkills();
+        		OutlandPortal.startPortal();
 			}
 		});
 	}
@@ -146,7 +147,7 @@ class TesseractPanel extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				System.out.println("grand challenge");
 				GameMouse.clickToGetFocus();
-				GrandChallenge.fightArena(getTextInt() == 0 ? 5 : getTextInt());
+				GrandChallenge.fightArena();
 			}
 		});
 	}

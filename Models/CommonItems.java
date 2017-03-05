@@ -11,10 +11,6 @@ public class CommonItems {
         GameMouse.click(point[x].x, point[x].y);
     }
 
-    public static void acceptHeroesAndStart() {
-        acceptHeroesAndStart(27000);
-    }
-
     public static void nextButton() {
         GameMouse.click(689, 431);
     }
@@ -23,16 +19,16 @@ public class CommonItems {
         GameMouse.click(685, 395);
     }
 
-    public static void acceptHeroesStartAutofight(int throttleTime) {
+    public static FightStatus acceptHeroesStartAutofight() {
         GameMouse.click(670, 470);
         GameMouse.sleep(2500);
         autoFight();
-        waitUntilFightDone();
+        return waitUntilFightDone();
     }
 
-    public static void acceptHeroesAndStart(int throttleTime) {
+    public static FightStatus acceptHeroesAndStart() {
         GameMouse.click(670, 470);
-        waitUntilFightDone();
+        return waitUntilFightDone();
     }
 
     public static void acceptChallenger() {
@@ -63,23 +59,47 @@ public class CommonItems {
         GameMouse.click(666, 250);
     }
 
-    public static void waitUntilFightDone() {
+    public static void clickTeamPreset() {
+        GameMouse.click(660, 100);
+    }
+
+    public static void clickUsePreset() {
+        GameMouse.click(660, 180);
+    }
+
+    public static void goToNextPreset() {
+        GameMouse.mouseWheel(700, 135, true, new GameMouseWheelListener() {
+            public boolean shouldKeepScrolling() {
+                Color color = GameMouse.getPixelColor(700, 135);
+                return color.getRed() > 100;
+            }
+        });
+        GameMouse.mouseWheel(700, 135, true, new GameMouseWheelListener() {
+            public boolean shouldKeepScrolling() {
+                Color color = GameMouse.getPixelColor(700, 135);
+                return color.getRed() < 100;
+            }
+        });
+    }
+
+    public static FightStatus waitUntilFightDone() {
         for(;;) {
-            if (fightDone()) {
-                return;
+            FightStatus fightStatus = fightDone();
+            if (fightStatus == FightStatus.WON || fightStatus == FightStatus.LOST) {
+                return fightStatus;
             }
         }
     }
 
-    public static boolean fightDone() {
+    public static FightStatus fightDone() {
         boolean won = checkFightStatus(535, 225, 60, 25);
         if (won) {
-            System.out.println("won " + won);
-            return true;
+            // System.out.println("won " + won);
+            return FightStatus.WON;
         }
         boolean lost = checkFightStatus(690, 215, 60, 25);
-        System.out.println("lost " + lost);
-        return lost;
+        // System.out.println("lost " + lost);
+        return lost ? FightStatus.LOST : FightStatus.FIGHTING;
     }
 
     public static boolean checkFightStatus(int x, int y, int width, int height) {

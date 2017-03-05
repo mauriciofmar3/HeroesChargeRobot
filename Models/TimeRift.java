@@ -16,7 +16,7 @@ public class TimeRift {
         Point[] point = new Point[2];
         point[0] = new Point(250, 300);
         point[1] = new Point(560, 300);
-        int[] difficulty = {3, 4};
+        int[] difficulty = {4, 4};
         GameMouse.click(point[x].x, point[x].y);
         CommonItems.pickDifficultyLevel(difficulty[x]);
         CommonItems.raidAll();
@@ -27,7 +27,7 @@ public class TimeRift {
     
     public static void startLevel() {
         GameMouse.click(680, 430);
-        CommonItems.acceptHeroesAndStart(200000);
+        CommonItems.acceptHeroesAndStart();
     }
 
     public static int[] trials() {

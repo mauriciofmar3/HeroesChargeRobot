@@ -5,7 +5,10 @@ public class Crusader {
     public static void completeCrusade(int startingLevel) {
         setupCrusade();
         for (int x = startingLevel; x < 15; ++x) {
-            startLevel(x);
+            FightStatus status = startLevel(x);
+            if (status == FightStatus.LOST) {
+                break;
+            }
             collectTreasure(x);
         }
     }
@@ -15,11 +18,12 @@ public class Crusader {
         GameMouse.drag(700, 300, 100, 300);
     }
 
-    public static void startLevel(int x) {
+    public static FightStatus startLevel(int x) {
         GameMouse.click(level[x].x, level[x].y);
         CommonItems.acceptChallenger();
-        CommonItems.acceptHeroesStartAutofight(33000 + (x * 1500));
+        FightStatus status = CommonItems.acceptHeroesStartAutofight();
         CommonItems.nextButton();
+        return status;
     }
 
     public static void collectTreasure(int x) {

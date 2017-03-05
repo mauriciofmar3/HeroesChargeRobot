@@ -2,7 +2,7 @@ import java.awt.Color;
 class DailyEvents {
 	public static String lastTask;
 	public static void doDailyEvents() {
-        signin();
+        // signin();
         selectDailyEvents();
 		for(;;) {
             if (isClaim()) {
@@ -11,13 +11,12 @@ class DailyEvents {
                 if (takeDailyAction(getTaskString())) {
                     continue;
                 } else {
-                    scrollToNextTask();
+                    if (!scrollToNextTask()) {
+                        finishLastTasks();
+                        break;
+                    }
                 }
             }
-			// String taskString = getTaskString();
-            // boolean isClaim = isClaim();
-            // System.out.println("TASK STRING " + taskString + " IS CLAIM " + isClaim);
-            // scrollToNextTask(); 
 		}
 	}
 
@@ -25,7 +24,9 @@ class DailyEvents {
 		GameMouse.click(40, 370);
 	}
 
-    public static void scrollToNextTask() {
+    static int stuckStrollingCount = 0;
+    public static boolean scrollToNextTask() {
+        stuckStrollingCount = 0;
         GameMouse.mouseWheel(740, 146, true, new GameMouseWheelListener() {
             public boolean shouldKeepScrolling() {
                 Color color = GameMouse.getPixelColor(740, 146);
@@ -35,9 +36,19 @@ class DailyEvents {
         GameMouse.mouseWheel(740, 146, true, new GameMouseWheelListener() {
             public boolean shouldKeepScrolling() {
                 Color color = GameMouse.getPixelColor(740, 146);
-                return color.getRed() < 100;
+
+                if (color.getRed() >= 17 && color.getRed() <= 21 &&
+                    color.getGreen() >= 15 && color.getGreen() <= 17 &&
+                    color.getBlue() >= 11 && color.getBlue() <= 13) {
+                    stuckStrollingCount++;
+                } else {
+                    stuckStrollingCount = 0;
+                }
+
+                return color.getRed() < 100 && stuckStrollingCount <= 50;
             }
         });
+        return stuckStrollingCount <= 50;
     }
 
     public static String getTaskString() {
@@ -106,6 +117,16 @@ class DailyEvents {
             HeroSkills.addDailySkills();
             GameMouse.hitEscape();
             return true;
+        } else if (taskString.contains("Defense") || taskString.contains("Outland")) {
+            DailyEvents.clickGoButton();
+            boolean succeeded = OutlandPortal.startPortal();
+            GameMouse.hitEscape();
+            return succeeded;
+        // } else if (taskString.contains("Arena")) {
+        //     DailyEvents.clickGoButton();
+        //     Arena.fightArena();
+        //     GameMouse.hitEscape();
+        //     return false;
         }
         return false;
     }
@@ -118,6 +139,13 @@ class DailyEvents {
     public static void signin() {
         GameMouse.click(40, 200);
         GameMouse.click(666, 460);
+        GameMouse.hitEscape();
+    }
+
+    public static void finishLastTasks() {
+        // Go for grand challenge
+        GameMouse.click(688, 222);
+        GrandChallenge.fightArena();
         GameMouse.hitEscape();
     }
 }
