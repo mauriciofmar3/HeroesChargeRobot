@@ -18,6 +18,7 @@ class TesseractPanel extends JPanel {
 		closeWhenDoneCheckBox();
 		addRepeatBronzeChestsButton();
 		addDailyEventsButton();
+		addOutlandPortalButton();
 	}
 
 	JCheckBox closeWhenDoneCheckBox;
@@ -108,7 +109,30 @@ class TesseractPanel extends JPanel {
 				GameMouse.clickToGetFocus();
 				// GameMouse.drag(200, 600, 800, 300);
 				// GameMouse.mouseWheel(900, 300, 4000);
-				GameMouse.hitEscape();
+				// GameMouse.hitEscape();
+				// Color pixelColor = GameMouse.getPixelColor(740, 155);
+				// System.out.println(pixelColor);
+				// pixelColor = GameMouse.getPixelColor(740, 244);
+				// System.out.println(pixelColor);
+        		// GameMouse.mouseWheel(737, 200, -43050);
+        		// BootyCave.setupAllCaves();
+
+        		// GameMouse.mouseWheel(700, 135, true, new GameMouseWheelListener() {
+          //   		public boolean shouldKeepScrolling() {
+          //       		Color color = GameMouse.getPixelColor(700, 135);
+          //       		return color.getRed() > 100;
+          //   		}
+        		// });
+        		// GameMouse.mouseWheel(700, 135, true, new GameMouseWheelListener() {
+          //   		public boolean shouldKeepScrolling() {
+          //       		Color color = GameMouse.getPixelColor(700, 135);
+          //       		return color.getRed() < 100;
+          //   		}
+        		// });
+        		// BootyCave.setupAllCaves();
+        		// BootyCave.claimAllExtra();
+        		// HeroSkills.addDailySkills();
+        		OutlandPortal.startPortal();
 			}
 		});
 	}
@@ -123,7 +147,7 @@ class TesseractPanel extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				System.out.println("grand challenge");
 				GameMouse.clickToGetFocus();
-				GrandChallenge.fightArena(getTextInt() == 0 ? 5 : getTextInt());
+				GrandChallenge.fightArena();
 			}
 		});
 	}
@@ -172,6 +196,24 @@ class TesseractPanel extends JPanel {
 				// GrandChallenge.fightArena(getTextInt() == 0 ? 5 : getTextInt());
 				// Chests.tryBronzeSeconds(getTextInt() == 0 ? 1 : getTextInt());
 				DailyEvents.doDailyEvents();
+			}
+		});
+	}
+
+	JButton addOutlandPortalButton;
+	public void addOutlandPortalButton() {
+		addOutlandPortalButton = new JButton();
+		addOutlandPortalButton.setText("Outland Portal");
+		addOutlandPortalButton.setPreferredSize(new Dimension(130, 50));
+		this.add(addOutlandPortalButton);
+		addOutlandPortalButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				System.out.println("outland portal");
+				OutlandPortal.startPortal();
+				// GameMouse.clickToGetFocus();
+				// GrandChallenge.fightArena(getTextInt() == 0 ? 5 : getTextInt());
+				// Chests.tryBronzeSeconds(getTextInt() == 0 ? 1 : getTextInt());
+				// DailyEvents.doDailyEvents();
 			}
 		});
 	}

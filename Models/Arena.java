@@ -3,9 +3,9 @@ public class Arena {
 	public static void fightArena() {
 		selectArena();
 		selectFight();
-		CommonItems.acceptHeroesAndStart(70000);
+		CommonItems.acceptHeroesAndStart();
 		CommonItems.failedButton();
-		CommonItems.backButton();
+		GameMouse.hitEscape();
 	}
 
 	public static void selectArena() {

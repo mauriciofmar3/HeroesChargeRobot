@@ -5,13 +5,12 @@ public class Crusader {
     public static void completeCrusade(int startingLevel) {
         setupCrusade();
         for (int x = startingLevel; x < 15; ++x) {
-            startLevel(x);
+            FightStatus status = startLevel(x);
+            if (status == FightStatus.LOST) {
+                break;
+            }
             collectTreasure(x);
-            // if (x == 4 || x == 10) {
-            //     dragScreen();
-            // }
         }
-        // CommonItems.backButton();
     }
 
     public static void dragScreen() {
@@ -19,21 +18,17 @@ public class Crusader {
         GameMouse.drag(700, 300, 100, 300);
     }
 
-    public static void startLevel(int x) {
+    public static FightStatus startLevel(int x) {
         GameMouse.click(level[x].x, level[x].y);
         CommonItems.acceptChallenger();
-        CommonItems.acceptHeroesStartAutofight(33000 + (x * 1500));
+        FightStatus status = CommonItems.acceptHeroesStartAutofight();
         CommonItems.nextButton();
+        return status;
     }
 
     public static void collectTreasure(int x) {
         GameMouse.click(treasure[x].x, treasure[x].y);
-        GameMouse.sleep(1500);
-        if (x % 3 == 2) {
-            CommonItems.hitLowerOK();
-        } else {
-            CommonItems.hitOK();
-        }
+        GameMouse.hitEscape();
     }
 
     public static void setupCrusade() {
