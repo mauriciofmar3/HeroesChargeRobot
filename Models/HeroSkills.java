@@ -1,7 +1,7 @@
 
 import java.awt.*;
 class HeroSkills {
-	public static String currentHero = "Puppet Master";
+	public static String currentHero = "nipulat"; // Manipulator
 	public static int position = 4; // Back
 
 	public static void addDailySkills() {

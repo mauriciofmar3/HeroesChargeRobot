@@ -38,7 +38,7 @@ class DailyEvents {
                 Color color = GameMouse.getPixelColor(740, 146);
 
                 if (color.getRed() >= 17 && color.getRed() <= 21 &&
-                    color.getGreen() >= 15 && color.getGreen() <= 17 &&
+                    color.getGreen() >= 14 && color.getGreen() <= 17 &&
                     color.getBlue() >= 11 && color.getBlue() <= 13) {
                     stuckStrollingCount++;
                 } else {
@@ -122,11 +122,16 @@ class DailyEvents {
             boolean succeeded = OutlandPortal.startPortal();
             GameMouse.hitEscape();
             return succeeded;
-        // } else if (taskString.contains("Arena")) {
-        //     DailyEvents.clickGoButton();
-        //     Arena.fightArena();
-        //     GameMouse.hitEscape();
-        //     return false;
+        } else if (taskString.contains("Team") || taskString.contains("Work")) {
+            DailyEvents.clickGoButton();
+            GuildRaid.raidAll();
+            GameMouse.hitEscape();
+            return true;
+        } else if (taskString.contains("Arena")) {
+            DailyEvents.clickGoButton();
+            Arena.fightArena();
+            GameMouse.hitEscape();
+            return true;
         }
         return false;
     }

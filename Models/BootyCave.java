@@ -3,6 +3,7 @@ import java.awt.*;
 class BootyCave {
 	public static boolean lastResult = true;
 	public static int sameResultCounter = 0;
+	public static final int MAX_CAVE_POWER = 59000;
 
 	public static void plunderGold() {
 		System.out.println("SETUP ALL CAVES");
@@ -19,7 +20,7 @@ class BootyCave {
 				GameMouse.hitEscape();
 				return;
 			}
-			if (enemyPower < 54000 && enemyPower > 10000) {
+			if (enemyPower < MAX_CAVE_POWER && enemyPower > 10000) {
 				System.out.println("YES");
 				sameResultCounter = lastResult == true ? sameResultCounter + 1 : 0;
 				lastResult = true;

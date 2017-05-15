@@ -3,8 +3,8 @@ public class CommonItems {
     public static void pickDifficultyLevel(int x) {
         Point[] point = new Point[6];
         point[0] = new Point(200, 250);
-        point[1] = new Point(400, 260);
-        point[2] = new Point(600, 260);
+        point[1] = new Point(400, 250);
+        point[2] = new Point(600, 250);
         point[3] = new Point(200, 400);
         point[4] = new Point(400, 400);
         point[5] = new Point(600, 400);
@@ -16,7 +16,7 @@ public class CommonItems {
     }
 
     public static void failedButton() {
-        GameMouse.click(685, 395);
+        GameMouse.click(716, 440);
     }
 
     public static FightStatus acceptHeroesStartAutofight() {
@@ -85,7 +85,7 @@ public class CommonItems {
     public static FightStatus waitUntilFightDone() {
         for(;;) {
             FightStatus fightStatus = fightDone();
-            if (fightStatus == FightStatus.WON || fightStatus == FightStatus.LOST) {
+            if (fightStatus != FightStatus.FIGHTING) {
                 return fightStatus;
             }
         }
@@ -94,12 +94,17 @@ public class CommonItems {
     public static FightStatus fightDone() {
         boolean won = checkFightStatus(535, 225, 60, 25);
         if (won) {
-            // System.out.println("won " + won);
             return FightStatus.WON;
         }
         boolean lost = checkFightStatus(690, 215, 60, 25);
-        // System.out.println("lost " + lost);
-        return lost ? FightStatus.LOST : FightStatus.FIGHTING;
+        if (lost) {
+            return FightStatus.LOST;
+        }
+        boolean finishedRaid = checkFightStatus(600, 240, 60, 25);
+        if (finishedRaid) {
+            return FightStatus.FINISHED_RAID;
+        }
+        return FightStatus.FIGHTING;
     }
 
     public static boolean checkFightStatus(int x, int y, int width, int height) {

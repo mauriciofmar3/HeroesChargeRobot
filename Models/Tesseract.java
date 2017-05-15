@@ -56,4 +56,12 @@ class Tesseract {
         }
         return "";
     }
+
+    public static void appendStringToFile(String text, String filename) {
+        try {
+            FileWriter fw = new FileWriter(filename, true);
+            fw.write(text + "\n");
+            fw.close();
+        } catch(IOException e) { }
+    }
 }

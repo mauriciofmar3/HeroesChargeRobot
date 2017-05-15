@@ -19,6 +19,7 @@ class TesseractPanel extends JPanel {
 		addRepeatBronzeChestsButton();
 		addDailyEventsButton();
 		addOutlandPortalButton();
+		addSetupFreshInstallButton();
 	}
 
 	JCheckBox closeWhenDoneCheckBox;
@@ -51,6 +52,7 @@ class TesseractPanel extends JPanel {
 				GameMouse.sleep(2000);
 				int[] position = GameMouse.getMousePosition();
 				resultsTextArea.setText(position[0] + " " + position[1]);
+				Tesseract.appendStringToFile(position[0] + ", " + position[1], "mousePositions.text");
 			}
 		});
 	}
@@ -132,7 +134,8 @@ class TesseractPanel extends JPanel {
         		// BootyCave.setupAllCaves();
         		// BootyCave.claimAllExtra();
         		// HeroSkills.addDailySkills();
-        		OutlandPortal.startPortal();
+        		// OutlandPortal.startPortal();
+        		GuildRaid.raidAll();
 			}
 		});
 	}
@@ -214,6 +217,20 @@ class TesseractPanel extends JPanel {
 				// GrandChallenge.fightArena(getTextInt() == 0 ? 5 : getTextInt());
 				// Chests.tryBronzeSeconds(getTextInt() == 0 ? 1 : getTextInt());
 				// DailyEvents.doDailyEvents();
+			}
+		});
+	}
+
+	JButton addSetupFreshInstallButton;
+	public void addSetupFreshInstallButton() {
+		addSetupFreshInstallButton = new JButton();
+		addSetupFreshInstallButton.setText("Fresh Setup");
+		addSetupFreshInstallButton.setPreferredSize(new Dimension(130, 50));
+		this.add(addSetupFreshInstallButton);
+		addSetupFreshInstallButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				System.out.println("Fresh Setup");
+				FreshInstallSetup.simulateFreshSetup();
 			}
 		});
 	}

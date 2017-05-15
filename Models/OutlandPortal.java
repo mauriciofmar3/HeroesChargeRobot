@@ -40,14 +40,16 @@ public class OutlandPortal {
     }
 
     public static int getDifficulty(String portal) {
-        if (portal.contains("Raged Blood")) {
-            return -1;
+        if (portal.contains("Raged") || portal.contains("Blood")) {
+            return 4;
         } else if (portal.contains("Burning") || portal.contains("Phoenix")) {
             return 4;
         } else if (portal.contains("Lord") || portal.contains("Caves")) {
             return 2;
         } else if (portal.contains("Robot") || portal.contains("Fighter")) {
             return 4;
+        } else if (portal.contains("Northern") || portal.contains("Dragon")) {
+            return 3;
         }
         return -1;
     } 

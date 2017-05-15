@@ -1,3 +1,3 @@
 public enum FightStatus {
-    WON, LOST, FIGHTING
+    WON, LOST, FIGHTING, FINISHED_RAID
 }
